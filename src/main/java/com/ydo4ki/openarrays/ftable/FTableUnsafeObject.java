@@ -7,7 +7,14 @@ public class FTableUnsafeObject<O, T> extends FTableUnsafe<O> implements FTable<
 	FTableUnsafeObject(Class<O> owner, Class<T> fieldType, Field[] fields) {
 		super(owner, fieldType, fields);
 	}
+	FTableUnsafeObject(Class<?>[] owners, Class<T> fieldType, Field[] fields) {
+		super(owners, fieldType, fields);
+	}
 
+	@Override
+	public int size() {
+		return fieldOffsets.length;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

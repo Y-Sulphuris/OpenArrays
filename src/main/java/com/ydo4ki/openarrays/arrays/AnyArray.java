@@ -1,6 +1,8 @@
-package com.ydo4ki.openarrays;
+package com.ydo4ki.openarrays.arrays;
 
-public abstract class AnyArray<T> implements java.io.Serializable, Cloneable, Iterable<T> {
+import java.util.RandomAccess;
+
+public abstract class AnyArray<T> implements java.io.Serializable, RandomAccess, Cloneable, Iterable<T> {
 	public abstract int length();
 
 	protected abstract T genericGet(int index);

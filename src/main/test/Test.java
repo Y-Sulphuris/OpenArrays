@@ -7,7 +7,7 @@ public class Test {
     final Object o1;
     final Object o2;
 
-    static final FTable<Test, Object> ftable = FTable.newTable(MethodHandles.lookup(), Test.class, Object.class, "o1", "o2");
+    static final FTable<Test, Object> ftable = FTable.fast(MethodHandles.lookup(), Test.class, Object.class, "o1", "o2");
 
     Object get(int index) {
         try {

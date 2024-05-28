@@ -1,4 +1,4 @@
-package com.ydo4ki.openarrays;
+package com.ydo4ki.openarrays.arrays;
 
 public abstract class ByteArray extends AnyArray<Byte> {
 

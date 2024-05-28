@@ -1,10 +1,18 @@
 package com.ydo4ki.openarrays.ftable;
 
 import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Field;
 
 public class FTableMethodHandlesObject<O, T> extends FTableMethodHandles<O> implements FTable<O, T> {
     FTableMethodHandlesObject(MethodHandles.Lookup lookup, Class<O> owner, Class<T> fieldType, String[] fieldNames) {
         super(lookup, owner, fieldType, fieldNames);
+    }
+
+    public FTableMethodHandlesObject(MethodHandles.Lookup lookup, Class<?>[] owner, Class<?> fieldType, String[] fieldNames) {
+        super(lookup, owner, fieldType, fieldNames);
+    }
+    public FTableMethodHandlesObject(MethodHandles.Lookup lookup, Field[] fields) {
+        super(lookup, fields);
     }
 
     @SuppressWarnings("unchecked")
@@ -22,5 +30,10 @@ public class FTableMethodHandlesObject<O, T> extends FTableMethodHandles<O> impl
 
     public void unsafeSetExact(O owner, int index, T newValue) throws Throwable {
         indexSetters[index].invokeExact(owner, newValue);
+    }
+
+    @Override
+    public int size() {
+        return indexGetters.length;
     }
 }
