@@ -3,15 +3,12 @@ package com.ydo4ki.openarrays.ftable;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 
-public class FTableMethodHandlesObject<O, T> extends FTableMethodHandles<O> implements FTable<O, T> {
+class FTableMethodHandlesObject<O, T> extends FTableMethodHandles<O> implements FTable<O, T> {
     FTableMethodHandlesObject(MethodHandles.Lookup lookup, Class<O> owner, Class<T> fieldType, String[] fieldNames) {
         super(lookup, owner, fieldType, fieldNames);
     }
 
-    public FTableMethodHandlesObject(MethodHandles.Lookup lookup, Class<?>[] owner, Class<?> fieldType, String[] fieldNames) {
-        super(lookup, owner, fieldType, fieldNames);
-    }
-    public FTableMethodHandlesObject(MethodHandles.Lookup lookup, Field[] fields) {
+	FTableMethodHandlesObject(MethodHandles.Lookup lookup, Field[] fields) {
         super(lookup, fields);
     }
 

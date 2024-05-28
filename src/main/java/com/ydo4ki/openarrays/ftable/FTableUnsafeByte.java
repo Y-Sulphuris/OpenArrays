@@ -7,6 +7,9 @@ public class FTableUnsafeByte<O> extends FTableUnsafe<O> implements FTableByte<O
     FTableUnsafeByte(Class<O> owner, Field[] fields) {
         super(owner, byte.class, fields);
     }
+	FTableUnsafeByte(Field[] fields) {
+		super(byte.class, fields);
+	}
 
     @Override
     public byte unsafeGet(O owner, int index) throws Throwable {

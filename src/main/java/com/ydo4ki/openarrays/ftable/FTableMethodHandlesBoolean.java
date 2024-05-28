@@ -1,11 +1,15 @@
 package com.ydo4ki.openarrays.ftable;
 
 import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Field;
 
-public class FTableMethodHandlesBoolean<O> extends FTableMethodHandles<O> implements FTableBoolean<O> {
+class FTableMethodHandlesBoolean<O> extends FTableMethodHandles<O> implements FTableBoolean<O> {
     FTableMethodHandlesBoolean(MethodHandles.Lookup lookup, Class<O> owner, String... fieldNames) {
         super(lookup, owner, boolean.class, fieldNames);
     }
+	FTableMethodHandlesBoolean(MethodHandles.Lookup lookup, Field[] fields) {
+		super(lookup, boolean.class, fields);
+	}
 
     public boolean unsafeGet(O owner, int index) throws Throwable {
         return (boolean) indexGetters[index].invoke(owner);

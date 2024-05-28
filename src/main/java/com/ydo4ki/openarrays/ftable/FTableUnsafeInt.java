@@ -7,6 +7,9 @@ public class FTableUnsafeInt<O> extends FTableUnsafe<O> implements FTableInt<O> 
     FTableUnsafeInt(Class<O> owner, Field[] fields) {
         super(owner, int.class, fields);
     }
+	FTableUnsafeInt(Field[] fields) {
+		super(int.class, fields);
+	}
 
     @Override
     public int unsafeGet(O owner, int index) throws Throwable {

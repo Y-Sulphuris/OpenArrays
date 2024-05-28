@@ -39,13 +39,15 @@ class FTableUnsafe<O> {
 			}
 		}
 	}
-	FTableUnsafe(Class<?>[] owners, Class<?> fieldType, Field[] fields) {
+
+	FTableUnsafe(Field[] fields) {
+		this(fields[0].getType(), fields);
+	}
+	FTableUnsafe(Class<?> fieldType, Field[] fields) {
 		fieldOffsets = new long[fields.length];
 		for (int i = 0; i < fields.length; i++) {
-			if (fields[i].getDeclaringClass() != owners[i])
-				throw new IllegalArgumentException("Incorrect owner type " + fields[i]);
 			if (fields[i].getType() != fieldType)
-				throw new IllegalArgumentException("Incorrect field type " + fields[i]);
+				throw new IllegalArgumentException("Incorrect field type " + fields[i] + "(" + fieldType.getCanonicalName() + " expected)");
 			try {
 				assert U != null;
 				fieldOffsets[i] = ((sun.misc.Unsafe)U).objectFieldOffset(fields[i]);

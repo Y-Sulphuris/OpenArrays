@@ -1,11 +1,15 @@
 package com.ydo4ki.openarrays.ftable;
 
 import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Field;
 
 public class FTableMethodHandlesShort<O> extends FTableMethodHandles<O> implements FTableShort<O> {
     FTableMethodHandlesShort(MethodHandles.Lookup lookup, Class<O> owner, String... fieldNames) {
         super(lookup, owner, short.class, fieldNames);
     }
+	FTableMethodHandlesShort(MethodHandles.Lookup lookup, Field[] fields) {
+		super(lookup, short.class, fields);
+	}
 
     public short unsafeGet(O owner, int index) throws Throwable {
         return (short) indexGetters[index].invoke(owner);

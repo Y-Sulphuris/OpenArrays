@@ -7,6 +7,9 @@ public class FTableUnsafeBoolean<O> extends FTableUnsafe<O> implements FTableBoo
     FTableUnsafeBoolean(Class<O> owner, Field[] fields) {
         super(owner, boolean.class, fields);
     }
+	FTableUnsafeBoolean(Field[] fields) {
+		super(fields);
+	}
 
     @Override
     public boolean unsafeGet(O owner, int index) throws Throwable {

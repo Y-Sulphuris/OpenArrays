@@ -7,6 +7,9 @@ public class FTableUnsafeShort<O> extends FTableUnsafe<O> implements FTableShort
     FTableUnsafeShort(Class<O> owner, Field[] fields) {
         super(owner, short.class, fields);
     }
+	FTableUnsafeShort(Field[] fields) {
+		super(short.class, fields);
+	}
 
     @Override
     public short unsafeGet(O owner, int index) throws Throwable {

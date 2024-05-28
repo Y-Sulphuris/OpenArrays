@@ -1,11 +1,16 @@
 package com.ydo4ki.openarrays.ftable;
 
 import java.lang.invoke.MethodHandles;
+import java.lang.reflect.Field;
 
-public class FTableMethodHandlesDouble<O> extends FTableMethodHandles<O> implements FTableDouble<O> {
+class FTableMethodHandlesDouble<O> extends FTableMethodHandles<O> implements FTableDouble<O> {
     FTableMethodHandlesDouble(MethodHandles.Lookup lookup, Class<O> owner, String... fieldNames) {
         super(lookup, owner, double.class, fieldNames);
     }
+
+	FTableMethodHandlesDouble(MethodHandles.Lookup lookup, Field[] fields) {
+		super(lookup, double.class, fields);
+	}
 
     public double unsafeGet(O owner, int index) throws Throwable {
         return (double) indexGetters[index].invoke(owner);

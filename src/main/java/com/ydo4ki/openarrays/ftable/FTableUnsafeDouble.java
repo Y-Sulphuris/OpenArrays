@@ -7,6 +7,9 @@ public class FTableUnsafeDouble<O> extends FTableUnsafe<O> implements FTableDoub
     FTableUnsafeDouble(Class<O> owner, Field[] fields) {
         super(owner, double.class, fields);
     }
+	FTableUnsafeDouble(Field[] fields) {
+		super(double.class, fields);
+	}
 
     @Override
     public double unsafeGet(O owner, int index) throws Throwable {

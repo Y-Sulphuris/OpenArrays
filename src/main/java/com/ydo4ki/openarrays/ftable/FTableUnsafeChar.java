@@ -7,6 +7,9 @@ public class FTableUnsafeChar<O> extends FTableUnsafe<O> implements FTableChar<O
     FTableUnsafeChar(Class<O> owner, Field[] fields) {
         super(owner, char.class, fields);
     }
+	FTableUnsafeChar(Field[] fields) {
+		super(char.class, fields);
+	}
 
     @Override
     public char unsafeGet(O owner, int index) throws Throwable {

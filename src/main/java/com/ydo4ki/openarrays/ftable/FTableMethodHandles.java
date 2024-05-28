@@ -34,6 +34,20 @@ class FTableMethodHandles<O> {
 		}
 	}
 
+	FTableMethodHandles(MethodHandles.Lookup lookup, Class<?> fieldType, Field[] fields) {
+		indexGetters = new MethodHandle[fields.length];
+		indexSetters = new MethodHandle[fields.length];
+		for (int i = 0; i < fields.length; i++) {
+			try {
+				if (fields[i].getType() != fieldType)
+					throw new IllegalArgumentException("Incorrect field type " + fields[i] + "(" + fieldType.getCanonicalName() + " expected)");
+				indexGetters[i] = lookup.unreflectGetter(fields[i]);
+				indexSetters[i] = lookup.unreflectGetter(fields[i]);
+			} catch (IllegalAccessException e) {
+				throw new FieldTableFormingException(e);
+			}
+		}
+	}
 	FTableMethodHandles(MethodHandles.Lookup lookup, Field[] fields) {
 		indexGetters = new MethodHandle[fields.length];
 		indexSetters = new MethodHandle[fields.length];

@@ -7,6 +7,9 @@ public class FTableUnsafeFloat<O> extends FTableUnsafe<O> implements FTableFloat
     FTableUnsafeFloat(Class<O> owner, Field[] fields) {
         super(owner, float.class, fields);
     }
+	FTableUnsafeFloat(Field[] fields) {
+		super(float.class, fields);
+	}
 
     @Override
     public float unsafeGet(O owner, int index) throws Throwable {

@@ -7,6 +7,9 @@ public class FTableUnsafeLong<O> extends FTableUnsafe<O> implements FTableLong<O
     FTableUnsafeLong(Class<O> owner, Field[] fields) {
         super(owner, long.class, fields);
     }
+	FTableUnsafeLong(Field[] fields) {
+		super(long.class, fields);
+	}
 
     @Override
     public long unsafeGet(O owner, int index) throws Throwable {
