@@ -3,7 +3,7 @@ package com.ydo4ki.openarrays.ftable;
 
 import java.lang.reflect.Field;
 
-abstract class FTableUnsafe<T> extends FTable<T> {
+class FTableUnsafe<O> {
 
 	static boolean isAllowed;
 
@@ -22,9 +22,9 @@ abstract class FTableUnsafe<T> extends FTable<T> {
 	}
 
 	final long[] fieldOffsets;
-	final Class<?> owner;
+	final Class<O> owner;
 
-	FTableUnsafe(Class<?> owner, Class<?> fieldType, Field[] fields) {
+	FTableUnsafe(Class<O> owner, Class<?> fieldType, Field[] fields) {
 		fieldOffsets = new long[fields.length];
 		this.owner = owner;
 		for (int i = 0; i < fields.length; i++) {
@@ -42,14 +42,4 @@ abstract class FTableUnsafe<T> extends FTable<T> {
 		}
 	}
 
-
-	@Override
-	public T unsafeGetExact(Object owner, int index) throws Throwable {
-		return unsafeGet(owner, index);
-	}
-
-	@Override
-	public void unsafeSetExact(Object owner, int index, T newValue) throws Throwable {
-		unsafeSet(owner, index, newValue);
-	}
 }
