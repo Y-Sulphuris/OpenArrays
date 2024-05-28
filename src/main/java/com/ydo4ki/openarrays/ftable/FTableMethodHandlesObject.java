@@ -4,7 +4,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 
 class FTableMethodHandlesObject<O, T> extends FTableMethodHandles<O> implements FTable<O, T> {
-    FTableMethodHandlesObject(MethodHandles.Lookup lookup, Class<O> owner, Class<T> fieldType, String[] fieldNames) {
+    FTableMethodHandlesObject(MethodHandles.Lookup lookup, Class<? extends O> owner, Class<T> fieldType, String[] fieldNames) {
         super(lookup, owner, fieldType, fieldNames);
     }
 

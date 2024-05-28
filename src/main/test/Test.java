@@ -29,7 +29,7 @@ public class Test {
 }
 class PrimitiveTest {
     byte b0, b1, b2, b3;
-    static final FTableByte<PrimitiveTest> ftable = FTableByte.newTable(MethodHandles.lookup(), PrimitiveTest.class, "b", 4);
+    static final FTableByte<PrimitiveTest> ftable = FTableByte.fast(MethodHandles.lookup(), PrimitiveTest.class, "b", 4);
 
     PrimitiveTest(byte b0, byte b1, byte b2, byte b3) {
         this.b0 = b0;

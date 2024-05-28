@@ -8,7 +8,7 @@ class FTableMethodHandles<O> {
 	final MethodHandle[] indexGetters;
 	final MethodHandle[] indexSetters;
 
-	FTableMethodHandles(MethodHandles.Lookup lookup, Class<O> owner, Class<?> fieldType, String[] fieldNames) {
+	FTableMethodHandles(MethodHandles.Lookup lookup, Class<? extends O> owner, Class<?> fieldType, String[] fieldNames) {
 		indexGetters = new MethodHandle[fieldNames.length];
 		indexSetters = new MethodHandle[fieldNames.length];
 		for (int i = 0; i < fieldNames.length; i++) {

@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 public class FTableUnsafeObject<O, T> extends FTableUnsafe<O> implements FTable<O,T>  {
 
-	FTableUnsafeObject(Class<O> owner, Class<T> fieldType, Field[] fields) {
+	FTableUnsafeObject(Class<? extends O> owner, Class<T> fieldType, Field[] fields) {
 		super(owner, fieldType, fields);
 	}
 	FTableUnsafeObject(Field[] fields) {

@@ -1,0 +1,21 @@
+package com.ydo4ki.openarrays.arrays;
+
+public class Array<LEN><T> extends Array<SUBLEN><T> {
+	public T e<SUBLEN>;
+
+	public Array<LEN>(<T_ENUMER>) {
+		super(<SUBENUMER>);
+		this.e<SUBLEN> = e<SUBLEN>;
+	} public Array<LEN>() {}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T[] toJavaArray() {
+		return (T[]) new Object[]{<SUBENUMER>, e<SUBLEN>};
+	}
+
+	@Override
+	public int length() {
+		return <LEN>;
+	}
+}

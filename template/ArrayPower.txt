@@ -1,0 +1,34 @@
+package com.ydo4ki.openarrays.arrays;
+
+import com.ydo4ki.openarrays.ftable.FTable;
+
+import java.lang.invoke.MethodHandles;
+
+public class Array<LEN><T> extends Array<SUBLEN><T> {
+	public T <THISENUMERF>;
+
+	public Array<LEN>(<T_ENUMER>) {
+		super(<SUBENUMER>);
+		<THIS_SET>
+	} public Array<LEN>() {}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T[] toJavaArray() {
+		return (T[]) new Object[]{<SUBENUMERF>, <THISENUMERF>};
+	}
+
+	@Override
+	public int length() {
+		return <LEN>;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	FTable<Array<?>, Object> table() {
+		return ftable;
+	}
+
+	@SuppressWarnings({"rawtypes"})
+	private static final FTable ftable = FTable.fast(MethodHandles.lookup(), Array<LEN>.class, Object.class, "e", <LEN>);
+}

@@ -7,7 +7,11 @@ import java.util.Iterator;
 public class Array1<T> extends Array0<T> {
     public T e0;
 
-    @Override
+	public Array1(T e0) {
+		this.e0 = e0;
+	} public Array1() {}
+
+	@Override
     public T get(int index) {
         if (index == 0) return e0;
         throw new ArrayIndexOutOfBoundsException();

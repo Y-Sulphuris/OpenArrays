@@ -23,10 +23,10 @@ class FTableUnsafe<O> {
 
 	final long[] fieldOffsets;
 
-	FTableUnsafe(Class<O> owner, Class<?> fieldType, Field[] fields) {
+	FTableUnsafe(Class<? extends O> owner, Class<?> fieldType, Field[] fields) {
 		fieldOffsets = new long[fields.length];
 		for (int i = 0; i < fields.length; i++) {
-			if (fields[i].getDeclaringClass() != owner)
+			if (!fields[i].getDeclaringClass().isAssignableFrom(owner))
 				throw new IllegalArgumentException("Incorrect owner type " + fields[i]);
 			if (fields[i].getType() != fieldType)
 				throw new IllegalArgumentException("Incorrect field type " + fields[i]);

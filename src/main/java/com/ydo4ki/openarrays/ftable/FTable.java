@@ -24,7 +24,7 @@ public interface FTable<O, T> {
 		return array;
 	}
 
-	static <O, T> FTable<O, T> fast(MethodHandles.Lookup lookup, Class<O> owner, Class<T> fieldType, String fieldNamesBase, int length) throws FieldTableFormingException {
+	static <O, T> FTable<O, T> fast(MethodHandles.Lookup lookup, Class<? extends O> owner, Class<T> fieldType, String fieldNamesBase, int length) throws FieldTableFormingException {
 		String[] names = new String[length];
 		for (int i = 0; i < length; i++) {
 			names[i] = fieldNamesBase + i;
@@ -32,12 +32,16 @@ public interface FTable<O, T> {
 		return fast(lookup, owner, fieldType, names);
 	}
 
-	static <O, T> FTable<O, T> fast(MethodHandles.Lookup lookup, Class<O> owner, Class<T> fieldType, String... fieldNames) throws FieldTableFormingException {
+	static <O, T> FTable<O, T> fast(MethodHandles.Lookup lookup, Class<? extends O> owner, Class<T> fieldType, String... fieldNames) throws FieldTableFormingException {
 		if (FTableUnsafe.isAllowed) try {
 			int len = fieldNames.length;
 			Field[] fields = new Field[len];
 			for (int i = 0; i < len; i++) {
-				fields[i] = owner.getDeclaredField(fieldNames[i]);
+				try {
+					fields[i] = owner.getDeclaredField(fieldNames[i]);
+				} catch (NoSuchFieldException e) {
+					fields[i] = owner.getField(fieldNames[i]);
+				}
 			}
 			return new FTableUnsafeObject<>(owner, fieldType, fields);
 		} catch (FieldTableFormingException e) {
@@ -60,7 +64,7 @@ public interface FTable<O, T> {
 		return methodHandle(lookup, fields);
 	}
 
-	static <O, T> FTable<O, T> methodHandle(MethodHandles.Lookup lookup, Class<O> owner, Class<T> fieldType, String... fieldNames) throws FieldTableFormingException {
+	static <O, T> FTable<O, T> methodHandle(MethodHandles.Lookup lookup, Class<? extends O> owner, Class<T> fieldType, String... fieldNames) throws FieldTableFormingException {
 		return new FTableMethodHandlesObject<>(lookup, owner, fieldType, fieldNames);
 	}
 	static <O, T> FTable<O, T> methodHandle(MethodHandles.Lookup lookup, Field[] fields) throws FieldTableFormingException {
