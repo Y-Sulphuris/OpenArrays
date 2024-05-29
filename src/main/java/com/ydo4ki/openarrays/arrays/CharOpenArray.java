@@ -1,6 +1,6 @@
 package com.ydo4ki.openarrays.arrays;
 
-public abstract class CharArray extends AnyArray<Character> {
+public abstract class CharOpenArray extends AnyOpenArray<Character> {
 
 	public abstract char get(int index);
 
@@ -9,18 +9,18 @@ public abstract class CharArray extends AnyArray<Character> {
 	public abstract char[] toJavaArray();
 
 	@Override
-	protected Character genericGet(int index) {
+	protected Character getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, Character value) {
+	protected void setObject(int index, Character value) {
 		set(index, value);
 	}
 
 	@Override
-	public CharArray clone() {
-		return (CharArray) super.clone();
+	public CharOpenArray clone() {
+		return (CharOpenArray) super.clone();
 	}
 
 }

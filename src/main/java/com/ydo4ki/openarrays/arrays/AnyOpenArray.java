@@ -1,9 +1,10 @@
 package com.ydo4ki.openarrays.arrays;
 
-import java.util.Arrays;
-import java.util.RandomAccess;
+import com.ydo4ki.openarrays.AnyArray;
 
-public abstract class AnyArray<T> implements java.io.Serializable, RandomAccess, Cloneable, Iterable<T> {
+import java.util.Arrays;
+
+public abstract class AnyOpenArray<T> implements AnyArray<T> {
 	public abstract int length();
 
 	protected final void rangeCheck(int index) throws ArrayIndexOutOfBoundsException {
@@ -28,15 +29,23 @@ public abstract class AnyArray<T> implements java.io.Serializable, RandomAccess,
 		return throwable;
 	}
 
-	protected abstract T genericGet(int index);
 
-	protected abstract void genericSet(int index, T value);
+	public static <T> T get(AnyOpenArray<T> a, int index) {
+		return a.getObject(index);
+	}
+	public static <T> void set(AnyOpenArray<T> a, int index, T newValue) {
+		a.setObject(index, newValue);
+	}
+
+	protected abstract T getObject(int index);
+
+	protected abstract void setObject(int index, T value);
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public AnyArray<T> clone() {
+	public AnyOpenArray<T> clone() {
 		try {
-			return (AnyArray<T>) super.clone();
+			return (AnyOpenArray<T>) super.clone();
 		} catch (CloneNotSupportedException e) {
 			throw new AssertionError();
 		}

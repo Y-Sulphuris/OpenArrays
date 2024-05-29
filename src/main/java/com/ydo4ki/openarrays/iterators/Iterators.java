@@ -1,6 +1,6 @@
 package com.ydo4ki.openarrays.iterators;
 
-import com.ydo4ki.openarrays.arrays.Array;
+import com.ydo4ki.openarrays.arrays.OpenArray;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -27,7 +27,7 @@ public final class Iterators {
         };
     }
 
-    public static <T> Iterator<T> ofArray(Array<T> array) {
+    public static <T> Iterator<T> ofArray(OpenArray<T> array) {
         Objects.requireNonNull(array);
         return new Iterator<T>() {
             int i = 0;

@@ -1,7 +1,7 @@
 package com.ydo4ki.openarrays.arrays;
 
 
-public abstract class ShortArray extends AnyArray<Short> {
+public abstract class ShortOpenArray extends AnyOpenArray<Short> {
 
 	public abstract short get(int index);
 
@@ -10,18 +10,18 @@ public abstract class ShortArray extends AnyArray<Short> {
 	public abstract short[] toJavaArray();
 
 	@Override
-	protected Short genericGet(int index) {
+	protected Short getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, Short value) {
+	protected void setObject(int index, Short value) {
 		set(index, value);
 	}
 
 	@Override
-	public ShortArray clone() {
-		return (ShortArray) super.clone();
+	public ShortOpenArray clone() {
+		return (ShortOpenArray) super.clone();
 	}
 }
 

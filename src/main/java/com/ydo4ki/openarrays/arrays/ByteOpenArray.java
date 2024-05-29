@@ -1,6 +1,6 @@
 package com.ydo4ki.openarrays.arrays;
 
-public abstract class ByteArray extends AnyArray<Byte> {
+public abstract class ByteOpenArray extends AnyOpenArray<Byte> {
 
 	public abstract byte get(int index);
 
@@ -9,18 +9,18 @@ public abstract class ByteArray extends AnyArray<Byte> {
 	public abstract byte[] toJavaArray();
 
 	@Override
-	protected Byte genericGet(int index) {
+	protected Byte getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, Byte value) {
+	protected void setObject(int index, Byte value) {
 		set(index, value);
 	}
 
 	@Override
-	public ByteArray clone() {
-		return (ByteArray) super.clone();
+	public ByteOpenArray clone() {
+		return (ByteOpenArray) super.clone();
 	}
 }
 

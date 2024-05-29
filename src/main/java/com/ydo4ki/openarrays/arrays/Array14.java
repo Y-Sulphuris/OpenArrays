@@ -3,7 +3,7 @@ package com.ydo4ki.openarrays.arrays;
 import com.ydo4ki.openarrays.ftable.FTable;
 import java.lang.invoke.MethodHandles;
 
-public class Array14<T> extends Array<T> {
+public class Array14<T> extends OpenArray<T> {
 	public T e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13;
 
 	public Array14(T e0, T e1, T e2, T e3, T e4, T e5, T e6, T e7, T e8, T e9, T e10, T e11, T e12, T e13) {

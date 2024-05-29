@@ -1,7 +1,7 @@
 package com.ydo4ki.openarrays.arrays;
 
 
-public class Array2<T> extends Array<T> {
+public class Array2<T> extends OpenArray<T> {
 	public T e0, e1;
 
 	public Array2(T e0, T e1) {

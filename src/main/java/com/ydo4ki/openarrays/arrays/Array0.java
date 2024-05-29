@@ -5,7 +5,7 @@ import com.ydo4ki.openarrays.OpenArrays;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class Array0<T> extends Array<T> {
+public class Array0<T> extends OpenArray<T> {
     @Override
     public T get(int index) {
         throw new ArrayIndexOutOfBoundsException();

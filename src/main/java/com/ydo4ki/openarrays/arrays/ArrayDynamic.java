@@ -2,7 +2,7 @@ package com.ydo4ki.openarrays.arrays;
 
 import java.util.Arrays;
 
-class ArrayDynamic<T> extends Array<T> {
+class ArrayDynamic<T> extends OpenArray<T> {
 	private T[] data;
 
 	@SuppressWarnings("unchecked")
@@ -50,7 +50,7 @@ class ArrayDynamic<T> extends Array<T> {
 	}
 
 	@Override
-	public Array<T> clone() {
+	public OpenArray<T> clone() {
 		ArrayDynamic<T> c = (ArrayDynamic<T>)super.clone();
 		c.data = data.clone();
 		return c;

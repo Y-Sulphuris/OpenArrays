@@ -1,7 +1,7 @@
 package com.ydo4ki.openarrays.arrays;
 
 
-public abstract class LongArray extends AnyArray<Long> {
+public abstract class LongOpenArray extends AnyOpenArray<Long> {
 
 	public abstract long get(int index);
 
@@ -10,17 +10,17 @@ public abstract class LongArray extends AnyArray<Long> {
 	public abstract long[] toJavaArray();
 
 	@Override
-	protected Long genericGet(int index) {
+	protected Long getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, Long value) {
+	protected void setObject(int index, Long value) {
 		set(index, value);
 	}
 
 	@Override
-	public LongArray clone() {
-		return (LongArray) super.clone();
+	public LongOpenArray clone() {
+		return (LongOpenArray) super.clone();
 	}
 }

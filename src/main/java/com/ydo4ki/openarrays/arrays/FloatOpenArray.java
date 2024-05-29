@@ -1,6 +1,6 @@
 package com.ydo4ki.openarrays.arrays;
 
-public abstract class FloatArray extends AnyArray<Float> {
+public abstract class FloatOpenArray extends AnyOpenArray<Float> {
 
 	public abstract float get(int index);
 
@@ -9,18 +9,18 @@ public abstract class FloatArray extends AnyArray<Float> {
 	public abstract float[] toJavaArray();
 
 	@Override
-	protected Float genericGet(int index) {
+	protected Float getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, Float value) {
+	protected void setObject(int index, Float value) {
 		set(index, value);
 	}
 
 	@Override
-	public FloatArray clone() {
-		return (FloatArray) super.clone();
+	public FloatOpenArray clone() {
+		return (FloatOpenArray) super.clone();
 	}
 }
 

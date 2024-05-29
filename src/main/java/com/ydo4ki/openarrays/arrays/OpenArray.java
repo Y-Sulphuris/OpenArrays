@@ -1,13 +1,14 @@
 package com.ydo4ki.openarrays.arrays;
 
 
+import com.ydo4ki.openarrays.Array;
 import com.ydo4ki.openarrays.iterators.Iterators;
 
 import java.util.Iterator;
 
-public abstract class Array<T> extends AnyArray<T> {
+public abstract class OpenArray<T> extends AnyOpenArray<T> implements Array<T> {
 
-	public static <T> Array<T> dynamic(int length) {
+	public static <T> OpenArray<T> dynamic(int length) {
 		return new ArrayDynamic<>(length);
 	}
 
@@ -28,18 +29,18 @@ public abstract class Array<T> extends AnyArray<T> {
 	}
 
 	@Override
-	protected T genericGet(int index) {
+	protected T getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, T value) {
+	protected void setObject(int index, T value) {
 		set(index, value);
 	}
 
 	@Override
-	public Array<T> clone() {
-		return (Array<T>) super.clone();
+	public OpenArray<T> clone() {
+		return (OpenArray<T>) super.clone();
 	}
 
 	@Override

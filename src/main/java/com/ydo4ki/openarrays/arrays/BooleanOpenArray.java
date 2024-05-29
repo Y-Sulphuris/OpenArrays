@@ -1,6 +1,6 @@
 package com.ydo4ki.openarrays.arrays;
 
-public abstract class BooleanArray extends AnyArray<Boolean> {
+public abstract class BooleanOpenArray extends AnyOpenArray<Boolean> {
 
 	public abstract boolean get(int index);
 
@@ -9,18 +9,18 @@ public abstract class BooleanArray extends AnyArray<Boolean> {
 	public abstract boolean[] toJavaArray();
 
 	@Override
-	protected Boolean genericGet(int index) {
+	protected Boolean getObject(int index) {
 		return get(index);
 	}
 
 	@Override
-	protected void genericSet(int index, Boolean value) {
+	protected void setObject(int index, Boolean value) {
 		set(index, value);
 	}
 
 	@Override
-	public BooleanArray clone() {
-		return (BooleanArray) super.clone();
+	public BooleanOpenArray clone() {
+		return (BooleanOpenArray) super.clone();
 	}
 
 }

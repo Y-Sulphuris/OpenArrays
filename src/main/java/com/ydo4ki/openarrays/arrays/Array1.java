@@ -4,7 +4,7 @@ import com.ydo4ki.openarrays.iterators.Iterators;
 
 import java.util.Iterator;
 
-public class Array1<T> extends Array<T> {
+public class Array1<T> extends OpenArray<T> {
 	public T e0;
 
 	public Array1(T e0) {
