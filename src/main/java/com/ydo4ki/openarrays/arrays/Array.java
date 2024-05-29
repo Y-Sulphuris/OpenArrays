@@ -1,11 +1,8 @@
 package com.ydo4ki.openarrays.arrays;
 
 
-import com.ydo4ki.openarrays.ftable.FTable;
 import com.ydo4ki.openarrays.iterators.Iterators;
 
-import java.lang.invoke.MethodHandles;
-import java.lang.reflect.Field;
 import java.util.Iterator;
 
 public abstract class Array<T> extends AnyArray<T> {
@@ -49,7 +46,7 @@ public abstract class Array<T> extends AnyArray<T> {
 	public Iterator<T> iterator() {
 		return Iterators.ofArray(this);
 	}
-
+/*
 	static final FTable<Array<?>, Object> table16 = FTable.fast(MethodHandles.lookup(), accumulateFields("com.ydo4ki.openarrays.arrays.Array"));
 	private static Field[] accumulateFields(String baseArrayName) {
 		Field[] fields = new Field[16];
@@ -61,5 +58,5 @@ public abstract class Array<T> extends AnyArray<T> {
 			}
 		}
 		return fields;
-	}
+	}*/
 }

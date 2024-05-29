@@ -6,7 +6,7 @@ import java.util.Collections;
 public class Gen {
 	public static void main(String[] args) throws IOException {
 		//while (len++ < 16) {}
-		powerArray();
+		progArray();
 	}
 
 	static void powerArray() throws IOException {
@@ -19,8 +19,9 @@ public class Gen {
 	}
 	static void progArray() throws IOException {
 		String str = String.join("\n", Files.readAllLines(new File("template/Array.txt").toPath()));
-		int len = 32;
-		Files.write(new File("src/main/java/com/ydo4ki/openarrays/arrays/Array" + len + ".java").toPath(), Collections.singleton(arrayByLen(str, len)));
+		int len = 0;
+		while (len++ < 16)
+			Files.write(new File("src/main/java/com/ydo4ki/openarrays/arrays/Array" + len + ".java").toPath(), Collections.singleton(arrayByLen(str, len)));
 	}
 
 	static String enumer(int start, int len,@Deprecated boolean forceField) {
@@ -67,9 +68,10 @@ public class Gen {
 	}
 	static String arrayByLen(String array, int len) {
 		array = array.replace("<LEN>", String.valueOf(len));
-		array = array.replace("<SUBLEN>", String.valueOf(len-1));
 
-		array = array.replace("<SUBENUMER>", enumer(0, len-1, false));
+		array = array.replace("<THIS_SET>", this_set(0, len));
+
+		array = array.replace("<ENUMER>", enumer(0, len, true));
 
 		array = array.replace("<T_ENUMER>", t_enumer(len));
 		return array;

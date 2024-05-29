@@ -1,21 +1,49 @@
 package com.ydo4ki.openarrays.arrays;
 
-public class Array<LEN><T> extends Array<SUBLEN><T> {
-	public T e<SUBLEN>;
+import com.ydo4ki.openarrays.ftable.FTable;
+import java.lang.invoke.MethodHandles;
+
+public class Array<LEN><T> extends Array<T> {
+	public T <ENUMER>;
 
 	public Array<LEN>(<T_ENUMER>) {
-		super(<SUBENUMER>);
-		this.e<SUBLEN> = e<SUBLEN>;
+		<THIS_SET>
 	} public Array<LEN>() {}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public T[] toJavaArray() {
-		return (T[]) new Object[]{<SUBENUMER>, e<SUBLEN>};
+		return (T[]) new Object[]{<ENUMER>};
 	}
 
 	@Override
 	public int length() {
 		return <LEN>;
 	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T get(int index) {
+		rangeCheck(index);
+		try {
+			return (T) ftable.unsafeGet(this, index);
+		} catch (Throwable e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void set(int index, T element) {
+		rangeCheck(index);
+		try {
+			ftable.unsafeSet(this, index, element);
+		} catch (Throwable e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@SuppressWarnings({"rawtypes"})
+	private static final FTable ftable = FTable.fast(MethodHandles.lookup(), Array<LEN>.class, Object.class, "e", <LEN>);
 }
